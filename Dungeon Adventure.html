@@ -1,0 +1,76 @@
+<head>
+	<!--
+	Chance Price
+	2018 April 04
+	Lab 05 Dungeon Adventure
+	-->
+	
+	<title>Dungeon Adventure</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="js/daScript.js"></script>
+	<link rel="stylesheet" href="style/w3.css">
+	<style id=stagesHeight></style>
+</head>
+<body class="w3-mobile" style="height: 100%; background-color: DarkGrey;">
+<!--Page Title Heading-->
+	<div class="w3-container-padding w3-card-4 w3-round" style="margin: auto; width: 98%; height: 60px; background-color: #008080;">
+		<h1 style="text-align: center; letter-spacing: 1.5px; text-shadow: 2px black; color: ghostwhite;"><b>Dungeon Adventure</b></h1>
+	</div>
+<!--Messages/Buttons-->
+	<div id="messageBox" class="w3-container w3-panel" style="margin-top: 20px; height: 160px;">
+		<button id="proceedBTN" onclick="stage1Reveal()" class="w3-card w3-round w3-hover-shadow" style="text-align: right; font-weight:450; position: relative; top: 73%; left: 95%; background-color: #b3b3b3; display: none;">Proceed</button>
+		<form>
+			<input id="proceedBTN2" type="button" value="Proceed" class="w3-card w3-round w3-hover-shadow" style="font-weight: 450;position: relative;top: 115px;left: 95%;background-color: rgb(179, 179, 179);display: none;" onclick="russRoulGame()">
+		</form>
+			<div id="message" style="text-align: center; padding-top: 100px;"><h3>
+				<button id="beginBTN" class="w3-card-2 w3-round w3-hover-shadow" style="background-color: #e6e6e6; font-weight:450;" onclick="stage0Reveal()">Begin Your Adventure</button>
+			</h3></div>
+	</div>
+<!--Dungeon Layout-->
+	<div id="stages" class="w3-display-container w3-panel" style="position: absolute; left: 2.5%; height: auto; 30.4732px 60px; width: 95%; margin: 31px background-color: none;">
+		<div id="stage0" class="w3-container w3-display-topleft" style="display: none;">
+			<img src="img/entrance.png" style="position: absolute; top: 311px;">
+		</div>
+		<div id="stage1" class="w3-container w3-display-topleft" style="display: none;">
+			<img src="img/First_Room.png" style="position: absolute; top: 183px; left: 141px;">
+			<img src="img/Door_Top_Room1.png" class="w3-hover-shadow" style="position: absolute; top: 151px; left: 237px;" onclick="room2()">
+				<img id="endlessPit" src="img/Endless_Pit.png" style="position: absolute; top: 88px; left: 237px; display: none;">
+			<img src="img/Door_Room1_Top_Right.png" class="w3-hover-shadow" style="position: absolute; top: 214px; left: 396px;" onclick="stage2Reveal()">
+			<img src="img/Door_Middle_Right_Room1.png" class="w3-hover-shadow" style="position: absolute; top: 311px; left: 396;" onclick="stage3Reveal()">
+			<img src="img/Door_Bottom_Room1.png" class="w3-hover-shadow" style="position: absolute; top: 501px; left: 237px;" onclick="room3()">
+				<img id="magicMouth" src="img/Mouth_Room1.png" style="position: absolute; top: 533px; left: 205px; display: none;">
+		</div>
+		<div id="stage2" class="w3-container w3-display-topleft" style="display: none;">
+			<img src="img/Hallway5.png" style="position: absolute; top: 214px; left: 430px;">
+				<img id="doorOutside" src="img/Door_Top_Hallway5.png" class="w3-hover-shadow" style="position: absolute; top: 182px; left: 622px;" onclick="room4()">
+				<img id="portalOutsideHall" src="img/Hallway_To_Portal_Outside.png" style="position: absolute; top: 85px; left: 621px; display: none;">
+				<img id="portalOutside" src="img/Portal_Outside.png" style="position: absolute; top: 20px; left: 589px; display: none;">
+				<img id="doorTreasure" src="img/Door_Right_Hallway5.png" class="w3-hover-shadow" style="position: absolute; top: 215px; left: 749px;" onclick="room5()">
+				<img id="hallwayTreasure" src="img/hallway_Treasure.png" style="position: absolute; top: 214px; left: 781px; display: none;">
+				<img id="portalOutside2" src="img/Portal_Outside_treasure.png" style="position: absolute; top: 311px; left: 910px; display: none;">
+		</div>
+		<div id="stage3" class="w3-container w3-display-topleft" style="display: none;">
+			<img src="img/Hallway_To_Hallway8.png" style="position: absolute; top: 311px; left: 429px;">
+			<img src="img/Hallway8.png" style="position: absolute; top: 375px; left: 559px;">
+			<img src="img/Door_To_Ninth_Plane.png" class="w3-hover-shadow" style="position: absolute; top: 406px; left: 620px;" onclick="room6()">
+				<img id="ninthPlane" src="img/Ninth_Plane.png" style="position: absolute; top: 406px; left: 653px; display: none;">
+			<img src="img/Door_To_Tenth_Plane.png" class="w3-hover-shadow" style="position: absolute; top: 503px; left: 620px;" onclick="room7()">
+				<img id="tenthPlane" src="img/Tenth_Plane.png" style="position: absolute; top: 503px; left: 653px; display: none;">
+			<img src="img/Door_To_Fire_Trap.png" class="w3-hover-shadow" style="position: absolute; top: 600px; left: 620px;" onclick="room8()">
+				<img id="fireTrap" src="img/Fire_Trap.png" style="position: absolute; top:600px ; left: 651px; display: none;">
+			<img src="img/Door_To_Gas_Trap.png" class="w3-hover-shadow" style="position: absolute; top: 696px; left: 621px;" onclick="room9()">
+				<img id="shortHall" src="img/Short_Hall.png" style="position: absolute; top: 696px; left: 653px; display: none;">
+				<img id="gasTrap" src="img/Gas_Trap.png" style="position: absolute; top: 696px; left: 683px; display: none;">
+			<img src="img/Door_To_Russian_Roullete.png" class="w3-hover-shadow" style="position: absolute; top: 470px; left: 526px;" onclick="room10()">
+				<img id="russRoul" src="img/Russian_Roullete.png" style="position: absolute; top: 470px; left: 463px; display: none;">
+			<img src="img/Door_To_Sixth_Plane.png" class="w3-hover-shadow" style="position: absolute; top: 566px; left: 527px;" onclick="room11()">
+				<img id="sixthPlane" src="img/Sixth_Plane.png" style="position: absolute; top: 566px; left: 463px; display: none;">
+			<img src="img/Door_To_Spiked_Pit.png" class="w3-hover-shadow" style="position: absolute; top: 661px; left: 527px;" onclick="room12()">
+				<img id="spikedPit" src="img/Spiked_Pit.png" style="position: absolute; top: 661px; left: 462px; display: none;">
+			<img src="img/Door_To_Heaven.png" class="w3-hover-shadow" style="position: absolute; top: 758px; left: 527px;" onclick="room13()">
+				<img id="heaven" src="img/Heaven.png" style="position: absolute; top: 758px; left: 463px; display: none;">
+		</div>
+	</div>
+</body>
+<footer class="w3-container w3-bar w3-hover-shadow" style="position: fixed; bottom: 0; height: 40px; background-color: #006666;"></footer>
